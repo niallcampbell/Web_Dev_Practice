@@ -1,0 +1,75 @@
+body {
+    background-color: seashell;
+    font-family: "Courier New", monospace;
+}
+
+h2 {
+    text-align: center;
+}
+
+input {
+    font-family: "Courier New", monospace;
+    /* monospace is a generic family of fonts that act as a backup should "Courier New" not work on a given browser  */
+}
+
+input[type=text]{
+    width: 40%;
+    padding: 5px 10px;
+    border-radius: 2px; /* round edges */
+    border: 2px solid gray;
+}
+
+input[type=button]{
+    width: 250px;
+    background-color: floralwhite;
+    padding: 10px 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 2px solid gray;
+    transition-duration: 0.4s; /* speed at which the hover color appears */
+}
+
+input[type=button]:hover {
+    background-color: aliceblue;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+select {
+    font-family: "Courier New", monospace;
+    width: 30%;
+    padding: 5px 10px;
+    margin: 3px 0;
+    border-radius: 5px;
+    border: 2px solid gray;
+}
+
+table {
+    border-collapse: collapse;
+    text-align: center;
+    padding: 15px;
+}
+
+th {
+    background-color: lightgray;
+    padding: 8px;
+}
+
+tr:hover {
+    background-color: azure;
+}
+
+#bodyOfWork {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    width: 50%;
+    border: solid;
+}
+
+#newEmployeeDetails {
+    border-radius: 5px;
+    background-color: seashell;
+    padding: 20px;
+    width: 50%;
+    border: solid;
+}

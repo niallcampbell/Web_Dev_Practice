@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <title>Employee Form</title>
+        <script type="text/javascript" src="javascript/employee.js"></script>
+        <link rel="stylesheet" href="css/employee.css">
+    </head>
+    
+    <body>
+        <div id="bodyOfWork">
+            <h2>Employee</h2>
+
+            <div id="EmployeeForm">
+
+                <p>Please enter the details of the employee in the form below:</p>
+
+                <form>
+
+                    First Name:
+                    <br/>
+                    <input type="text" id="first_name" />
+                    <br/>
+                    <br/>
+                    Surname:
+                    <br/>
+                    <input type="text" id="surname" />
+                    <br/>
+                    <br/>
+                    Job Title:
+                    <br/>
+                    <select id="job_title">
+                        <option value="Software Engineer" selected>Software Engineer</option>
+                        <option value="Data Analyst">Data Analyst</option>
+                        <option value="Scrum Manager">Scrum Manager</option>
+                        <option value="Product Owner">Product Owner</option>
+                    </select>
+                    <br/>
+                    <br/>
+
+                    <input type="button" id="submit_employee_details_button" value="Create Employee" onclick="createEmployee()" />
+
+                </form>
+
+            </div>
+            
+            <div id="results" style="display: none">
+                <div id="newEmployeeDetails" >
+                    <p id="name_result"></p>
+                    <p id="job_title_result"></p>
+                    <p id="employee_id_result"></p>
+                </div>
+
+                <p id="question">Would you like to create another employee?</p>
+                <br/>
+                <input type="button" id="create_another_employee" value="Create Another Employee" onclick="resetScreenToAddAnotherEmployee()" />
+
+                </div>
+            <br/>
+
+            <input type="button" id="listAllEmployees" value="List All Employees" onclick="printAllEmployees()" />
+            <br/>
+            <br/>
+
+            <table id="empTable" border="1" style="display: none">
+                <tr>
+                    <th>Employee Name</th>
+                    <th>Job Title</th>
+                    <th>Employee ID</th>
+                </tr>
+            </table>
+        
+        </div>
+    </body>
+    
+</html>
