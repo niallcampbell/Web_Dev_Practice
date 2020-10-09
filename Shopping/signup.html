@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        
+        <title>Sign up to shopping website</title>
+        <script type="text/javascript" src="javascript/shoppingJS.js"></script>
+        <link rel=stylesheet href="css/shopping.css">
+        
+    </head>
+    
+    <body>
+        
+        <div id="loginBody" class="centerDivs">
+            
+            <h2>Sign up to the shopping website</h2>
+            
+            <div id="signupForm">
+            
+                <p>Please enter your details</p>
+
+                <form>
+
+                    Email:
+                    <input type="text" id="signupEmail" />
+                    <br/>
+
+                    First Name:
+                    <input type="text" id="firstname" />
+                    <br/>
+
+                    Surname:
+                    <input type="text" id="surname" />
+                    <br/>
+
+                    Username:
+                    <input type="text" id="signupUsername" />
+                    <br/>
+
+                    Password:
+                    <input type="password" id="signupPassword" />
+                    <br/>
+
+                    <br/>
+                    <br/>
+
+                    <input type="button" id="submitSignupDetails" class="buttons" value="Sign Up" onclick="createUserAndAddToList()" />
+
+                </form>
+
+                <br/>
+
+                <a href="index.html"><button type="button" id="returnToHomeFromLoginPage" class="buttons">Return to Home</button></a>
+                
+            </div>
+            
+            <div id="successfulSignup" style="display: none">
+                
+                <p>You have signed up successfully!</p>
+                
+                <div id="signupUserDetails">
+                    <p id="displaySignupName"></p>
+                    <p id="displaySignupEmail"></p>
+                    <p id="displaySignupUsername"></p>
+                </div>
+                
+                <a href="login.html"><button type="button" class="buttons">Login to Shopping Website</button></a>
+                
+            </div>
+            
+        </div>
+        
+    </body>
+    
+</html>
