@@ -5,6 +5,7 @@
         
         <title>Login to shopping website</title>
         <link rel=stylesheet href="css/shopping.css">
+        <script type="text/javascript" src="javascript/shoppingJS.js"></script>
         
     </head>
     
@@ -27,13 +28,21 @@
                 <br/>
                 <br/>
                 
-                <input type="button" id="submitLoginDetails" class="buttons" value="Login" onclick="verifyUserLoginDetails()" />
+                    <input type="button" id="submitLoginDetails" class="buttons" value="Login" onclick="verifyUserLoginDetails()" />
                 
             </form>
             
             <br/>
             
             <a href="index.html"><button type="button" id="returnToHomeFromLoginPage" class="buttons">Return to Home</button></a>
+            
+        </div>
+        
+        <div id="incorrectLoginDetails" class="centerDivs" style="display: none">
+            
+            <p>Login Details are inccorect</p>
+            
+            <a href="login.html"><button type="button" id="logInButton" class="buttons">Log In Again</button></a>
             
         </div>
         

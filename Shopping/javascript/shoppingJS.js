@@ -1,9 +1,5 @@
 //JavaScript file for shopping website
 
-//Global Variables
-var listOfUsers = []; //Array of users
-var numOfUsers = 0;
-
 //User object constructor
 function User(username, firstName, surname, email, password)
 {
@@ -41,6 +37,44 @@ function getPassword()
     return this.password;
 }
 
+
+/*
+    session storage can only store strings, it cannot store an object
+    convert the object to a string in order to store it
+*/
+function saveUserToSessionStorage(user)
+{
+    //convert the user to json object
+    var userObj = { username: user.getUsername(), name: user.getName(), email: user.getEmail(), password: user.getPassword() };
+    
+    var userObjString = JSON.stringify(userObj); //converts json object to string
+    
+    //save it to session storage
+    sessionStorage.setItem(user.getUsername(), userObjString);
+    
+}
+
+function getUserObjectFromSessionStorage(username)
+{
+    var userString = sessionStorage.getItem(username);
+    
+    if(userString == null)
+    {
+        return null;
+    }
+    
+    //convert the string back to an object
+    var userJSON = JSON.parse(userString);
+    
+    var name = userJSON.name.split(" ");
+    var firstname = name[0];
+    var surname = name[1];
+    
+    var userObj = new User(userJSON.username, firstname, surname, userJSON.email, userJSON.password);
+    
+    return userObj;
+}
+
 function createUserAndAddToList()
 {
     var email = document.getElementById("signupEmail").value;
@@ -51,9 +85,7 @@ function createUserAndAddToList()
     
     var user = new User(username, firstname, surname, email, password);
     
-    listOfUsers[numOfUsers] = user;
-    
-    numOfUsers++;
+    saveUserToSessionStorage(user);
     
     document.getElementById("signupForm").style.display = "none";
     document.getElementById("successfulSignup").style.display = "block";
@@ -66,23 +98,28 @@ function createUserAndAddToList()
 
 function verifyUserLoginDetails()
 {
-    var login = document.getElementById("loginName").value;
+    var username = document.getElementById("loginName").value;
     var pass = document.getElementById("loginPassword").value;
     
-    //check if login is a username or email
-    for(var i = 0; i < numOfUsers; i++)
+    var userObj = getUserObjectFromSessionStorage(username);
+    
+    if(userObj == null)
     {
-        if((listOfUsers[i].getEmail() == login || listOfUsers[i].getUsername() == login) && (listOfUsers[0].getPassword() == pass))
-        {
-            return true;
-            //store the user details in the web storage (probably session)
-            //redirect user to the main shopping page
-            //https://stackoverflow.com/questions/40539097/redirect-user-to-another-html-page-if-the-condition-is-true/40539127
-            //have the user logged in at the top right of all subsequent pages
-        }
+        document.getElementById("loginBody").style.display = "none";
+        document.getElementById("incorrectLoginDetails").style.display = "block";
     }
-    
-    return false;
-    
+    else
+    {
+        if(pass != userObj.getPassword())
+        {
+            document.getElementById("loginBody").style.display = "none";
+            document.getElementById("incorrectLoginDetails").style.display = "block";
+        }
+        
+        sessionStorage.setItem("currentUser", userObj.getUsername());
+        
+        //redirect to shopping page
+        window.location.href = "shop.html";
+    }
     
 }
