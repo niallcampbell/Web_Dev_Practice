@@ -18,3 +18,81 @@ body {
     width: 50%;
     border: solid;
 }
+
+header {
+    
+    text-align: center;
+}
+
+.navigationBar, .userDropdownButton {
+    
+    background-color: antiquewhite;
+    overflow: hidden;
+}
+
+/* styles the links in the navigation bar */
+.navigationBar a {
+    
+    float: left;
+    color: brown;
+    text-align: center;
+    padding: 14px 16px; /* above+below and left+right */
+    text-decoration: none; /* removes underline on links */
+    font-size: 17px;
+}
+
+/* change the colour of the links on hover */
+.navigationBar a:hover, .userDropdownDiv:hover .userDropdownButton, .userDropdownButton:focus {
+    
+    background-color: cornflowerblue;
+    color: aliceblue;    
+}
+
+/* links that are to be the right of the screen */
+.navTopRight {
+    float: right;
+}
+
+.userDropdownDiv {
+    
+    float: right;
+    overflow: hidden;
+}
+
+.userDropdownDiv .userDropdownButton {
+    
+    cursor: pointer;
+    font-size: 17px;
+    border: none;
+    outline: none;
+    color: brown;
+    padding: 14px 16px;
+    margin: 0;
+}
+
+.userDropdownContent {
+    
+    display: none;
+    position: absolute;
+    min-width:  121px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;   
+}
+
+.userDropdownContent a {
+    
+    float: none;
+    color: brown;
+    padding: 14px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.userDropdownContent a:hover {
+    background-color: azure;
+}
+
+.show {
+    display: block;
+}

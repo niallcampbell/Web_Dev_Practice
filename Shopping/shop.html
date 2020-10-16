@@ -5,15 +5,49 @@
         
         <title>Welcome to the Shopping Website</title>
         <link rel=stylesheet href="css/shopping.css">
+        <!-- Load icon library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script type="text/javascript" src="javascript/shoppingJS.js"></script>
         
     </head>
     
-    <body>
+    <body onload="loadNavBar()">
+        
+        <header>
+            <h1>The Shopping Website</h1>
+        </header>
+        
+        <div class="navigationBar">
+            
+            <a href="shop.html"><i class="fa fa-fw fa-home"></i> Home</a>
+            
+            <div class="navTopRight">
+                
+                <a href=""><i class="fa fa-fw fa-shopping-basket"></i> Basket</a>
+                
+                <div class="userDropdownDiv">
+                    <button class="userDropdownButton" id="userDropdownButtonID" onclick="showUserNavDropdown()" ></button>
+                    
+                    <div class="userDropdownContent" id="userDropdownContentID">
+                        
+                        <a href="">My Profile</a>
+                        <a href="">Sign Out</a>
+                        
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+        </div>
         
         <div id="shoppingMainPageBody" class="centerDivs">
             
             <h2>Welcome to the Shopping Website!</h2>
+            
+            <div id="shopItems">
+                <p>Available Items</p>
+            </div>
             
         </div>
         

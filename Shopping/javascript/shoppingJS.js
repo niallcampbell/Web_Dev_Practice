@@ -123,3 +123,34 @@ function verifyUserLoginDetails()
     }
     
 }
+
+function showUserNavDropdown()
+{
+    /* Gets the div element by its ID and then toggles/adds 'show' as a class of the div.
+        classList lists the classes associated with an element. 
+    */
+    document.getElementById("userDropdownContentID").classList.toggle("show");
+}
+
+/* If the user clicks anywhere else on the window, then the dropdown menu from the user nav is hidden. */
+window.onclick = function(userAction)
+{
+    if(!userAction.target.matches('.userDropdownButton'))
+    {
+        var myDropdown = document.getElementById("userDropdownContentID");
+        if(myDropdown.classList.contains('show'))
+        {
+            myDropdown.classList.remove('show');
+        }
+    }
+}
+
+function loadNavBar()
+{
+    var currentUsername = sessionStorage.getItem("currentUser");
+    var currentUser = getUserObjectFromSessionStorage(currentUsername);
+    var name = currentUser.getName().split(" ");
+    var firstname = name[0];
+    
+    document.getElementById("userDropdownButtonID").innerHTML = "<i class=\"fa fa-fw fa-user\"></i> " + firstname + " <i class=\"fa fa-fw fa-caret-down\"></i>";
+}
