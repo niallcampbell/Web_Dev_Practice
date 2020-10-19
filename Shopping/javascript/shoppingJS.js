@@ -124,6 +124,16 @@ function verifyUserLoginDetails()
     
 }
 
+function loadNavBar()
+{
+    var currentUsername = sessionStorage.getItem("currentUser");
+    var currentUser = getUserObjectFromSessionStorage(currentUsername);
+    var name = currentUser.getName().split(" ");
+    var firstname = name[0];
+    
+    document.getElementById("userDropdownButtonID").innerHTML = "<i class=\"fa fa-fw fa-user\"></i> " + firstname + " <i class=\"fa fa-fw fa-caret-down\"></i>";
+}
+
 function showUserNavDropdown()
 {
     /* Gets the div element by its ID and then toggles/adds 'show' as a class of the div.
@@ -145,12 +155,14 @@ window.onclick = function(userAction)
     }
 }
 
-function loadNavBar()
+
+function printUserInfoToUserProfilePage()
 {
-    var currentUsername = sessionStorage.getItem("currentUser");
-    var currentUser = getUserObjectFromSessionStorage(currentUsername);
-    var name = currentUser.getName().split(" ");
-    var firstname = name[0];
+    var currentUser = sessionStorage.getItem("currentUser");
+    var user = getUserObjectFromSessionStorage(currentUser);
     
-    document.getElementById("userDropdownButtonID").innerHTML = "<i class=\"fa fa-fw fa-user\"></i> " + firstname + " <i class=\"fa fa-fw fa-caret-down\"></i>";
+    document.getElementById("userProfileName").innerHTML = "Name: " + user.getName();
+    document.getElementById("userProfileUsername").innerHTML = "Username: " + user.getUsername();
+    document.getElementById("userProfileEmail").innerHTML = "Email: " + user.getEmail();
 }
+
