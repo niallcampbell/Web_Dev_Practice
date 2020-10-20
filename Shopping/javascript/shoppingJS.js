@@ -124,7 +124,7 @@ function verifyUserLoginDetails()
     
 }
 
-function loadNavBar()
+function printUserNameInNavBar()
 {
     var currentUsername = sessionStorage.getItem("currentUser");
     var currentUser = getUserObjectFromSessionStorage(currentUsername);
@@ -156,6 +156,13 @@ window.onclick = function(userAction)
 }
 
 
+function initialiseUserProfileHTMLPage()
+{
+    importNavBarIntoHTMLPage();
+    //printUserNameInNavBar();
+    printUserInfoToUserProfilePage();
+}
+
 function printUserInfoToUserProfilePage()
 {
     var currentUser = sessionStorage.getItem("currentUser");
@@ -166,3 +173,8 @@ function printUserInfoToUserProfilePage()
     document.getElementById("userProfileEmail").innerHTML = "Email: " + user.getEmail();
 }
 
+function importNavBarIntoHTMLPage()
+{
+    var navBarDiv = $("#navBarDiv");
+    navBarDiv.load("NavBar.html", function(){printUserNameInNavBar()});
+}
