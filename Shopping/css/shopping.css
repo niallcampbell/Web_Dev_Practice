@@ -5,7 +5,7 @@ body {
 .centerDivs {
     
     position: absolute;
-    top: 35%;
+    top: 50%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
@@ -21,6 +21,10 @@ body {
 
 header {
     
+    text-align: center;
+}
+
+p {
     text-align: center;
 }
 
@@ -95,4 +99,11 @@ header {
 
 .show {
     display: block;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }

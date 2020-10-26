@@ -176,5 +176,5 @@ function printUserInfoToUserProfilePage()
 function importNavBarIntoHTMLPage()
 {
     var navBarDiv = $("#navBarDiv");
-    navBarDiv.load("NavBar.html", function(){printUserNameInNavBar()});
+    navBarDiv.load("NavBar.html", function(){ printUserNameInNavBar() }); //function() is ran upon loading the html to the page
 }
