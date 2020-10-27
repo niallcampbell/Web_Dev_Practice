@@ -3,7 +3,7 @@
     
     <head>
         
-        <title>User Profile</title>
+        <title>Clothes Items</title>
         
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
         
@@ -21,23 +21,25 @@
         
     </head>
     
-    <body onload="initialiseUserProfileHTMLPage()">
-            
+    <body onload="importNavBarIntoHTMLPage(); populateItemPage();">
+        
+        
         <h2>The Shopping Website</h2>
-            
         
         <div id="navBarDiv"></div>
         
-        <div id="userProfileInfo" class="centerDivs">
-            
-            <h4>My Profile</h4>
-            
-            <p id="userProfileName"></p>
-            <p id="userProfileUsername"></p>
-            <p id="userProfileEmail"></p>            
-            
-            <a href="shop.html"><button type="button" class="buttons">Return to Shop</button></a>
-            
+        <br/>
+        
+        <div>
+            <img id="itemImage">
+            <br/>
+            <h4 id="itemName">Name</h4>
+            <p id="itemPrice">€30</p>
+            <select name="itemSize" id="itemSize">
+                <option value="small">Small</option>
+                <option value="medium">Medium</option>
+                <option value="large">Large</option>
+            </select>
         </div>
         
     </body>

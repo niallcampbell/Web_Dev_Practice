@@ -1,5 +1,14 @@
 //JavaScript file for shopping website
 
+
+//Global items
+var tshirt = new ClothingItem("tshirt", "Oversized T-Shirt", "images/oversizedTshirt.jpg",30, "small");
+var hoodie = new ClothingItem("hoodie", "Hoodie", "images/hoodie.jpg", 50, "small");
+var runners = new ClothingItem("runners", "Runners", "images/runners.jpg", 40, 8);
+
+var storeItems = [tshirt, hoodie, runners];
+
+
 //User object constructor
 function User(username, firstName, surname, email, password)
 {
@@ -177,4 +186,96 @@ function importNavBarIntoHTMLPage()
 {
     var navBarDiv = $("#navBarDiv");
     navBarDiv.load("NavBar.html", function(){ printUserNameInNavBar() }); //function() is ran upon loading the html to the page
+}
+
+
+//Populate the item.html page with the requested item content
+function populateItemPage()
+{
+    var itemID = getCurrentItem();
+    var itemToView;
+    
+    //get item object    
+    for(var i = 0; i < storeItems.length; i++)
+    {
+        if(itemID == storeItems[i].getItemID())
+        {
+            itemToView = storeItems[i];
+        }
+    }
+    
+    //populate page with values
+    
+    document.getElementById("itemName").innerHTML = itemToView.getItemDescription();
+    document.getElementById("itemImage").setAttribute("src", itemToView.getImage());
+    document.getElementById("itemPrice").innerHTML = "€" + itemToView.getItemPrice();
+    
+}
+
+/*
+    When the user clicks on an item to view, it is set in the session storage. 
+    This info will then be used to populate the content on the item.html page
+*/
+function setCurrentItemToView(itemID)
+{   
+    sessionStorage.setItem("currentItem", itemID);
+}
+
+/*
+    When the user navigates away from item.html, unset the current item. 
+*/
+function unsetCurrentItem()
+{
+    sessionStorage.removeItem("currentItem");
+}
+
+function getCurrentItem()
+{
+    return sessionStorage.getItem("currentItem");
+}
+
+/*
+    Item object constructor and methods
+*/
+
+function ClothingItem(id, description, image, price, size)
+{
+    //attributes
+    this.id = id;
+    this.description = description;
+    this.image = image;
+    this.price = price;
+    this.size = size;
+    
+    //methods
+    this.getItemID = getItemID;
+    this.getItemDescription = getItemDescription;
+    this.getImage = getImage;
+    this.getItemPrice = getItemPrice;
+    this.getItemSize = getItemSize;
+}
+
+function getItemID()
+{
+    return this.id;
+}
+
+function getItemDescription()
+{
+    return this.description;
+}
+
+function getImage()
+{
+    return this.image;
+}
+
+function getItemPrice()
+{
+    return this.price;
+}
+
+function getItemSize()
+{
+    return this.size;
 }

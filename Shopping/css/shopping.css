@@ -1,5 +1,5 @@
 body {
-    font-family: "Tahoma", monospace;
+    font-family: 'Roboto Mono', monospace;
 }
 
 .centerDivs {
@@ -24,8 +24,24 @@ header {
     text-align: center;
 }
 
+h2 {
+    font-family: 'Roboto Mono', monospace;
+    text-align: center;
+}
+
+h4 {
+    text-align: center;
+}
+
 p {
     text-align: center;
+}
+
+select {
+    font-family: 'Roboto Mono', monospace;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
 }
 
 .navigationBar, .userDropdownButton {
@@ -106,4 +122,18 @@ img {
     margin-left: auto;
     margin-right: auto;
     width: 50%;
+    height: 100%;
+}
+
+#itemImage {
+    width: 25%;
+    height: 25%;
+}
+
+button {
+    font-family: 'Roboto Mono', monospace;
+}
+
+input {
+    font-family: 'Roboto Mono', monospace;
 }
