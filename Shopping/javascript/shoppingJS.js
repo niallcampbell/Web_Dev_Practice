@@ -286,7 +286,7 @@ function addItemToBasket()
     
     if(sessionStorage.getItem("currentBasket") == null)
     {
-        var basket = {};
+        var basket = [];
         sessionStorage.setItem("currentBasket", JSON.stringify(basket));
         sessionStorage.setItem("numOfItemsInBasket", 0);
     }
@@ -296,15 +296,51 @@ function addItemToBasket()
     var itemPrice = document.getElementById("itemPrice").innerHTML;
     var itemSize = document.getElementById("itemSize").value;
     
-    var itemObj = { imageSrc: itemImageSrc, desc: itemName, price: itemPrice, itemSize: itemSize };
+    var itemObj = { imageSrc: itemImageSrc, itemName: itemName, itemPrice: itemPrice, itemSize: itemSize };
     
     var currentBasket = JSON.parse(sessionStorage.getItem("currentBasket"));
     var itemNum = parseInt(sessionStorage.getItem("numOfItemsInBasket")) + 1;
-    var itemNumName = "item" + itemNum;
-    currentBasket[itemNumName] = itemObj;
+    //var itemNumName = "item" + itemNum;
+    //currentBasket[itemNumName] = itemObj;
+    currentBasket.push(itemObj);
     
     sessionStorage.setItem("currentBasket", JSON.stringify(currentBasket));
     sessionStorage.setItem("numOfItemsInBasket", itemNum);
     
 }
 
+function printShoppingBasket()
+{
+    var currentBasket = JSON.parse(sessionStorage.getItem("currentBasket"));
+    var numItemsInBasket = parseInt(sessionStorage.getItem("numOfItemsInBasket"));
+    var currentItem;
+    
+    var tableBody = document.getElementById("basketTableBody");
+    
+    console.log(currentBasket[0].imageSrc);
+    
+    for(var i = 0; i < currentBasket.length; i++)
+    {
+        //add row to table
+        var row = tableBody.insertRow();
+        //add cells with info
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        var cell5 = row.insertCell(4);
+        
+        var div = document.createElement('div');
+        var img = document.createElement('img');
+        img.setAttribute("src", currentBasket[i].imageSrc);
+        img.setAttribute("class", "tableImage")
+        div.appendChild(img);
+        
+        cell1.appendChild(div);
+        cell1.setAttribute("class", "imageCell");
+        cell2.innerHTML = currentBasket[i].itemName;
+        cell3.innerHTML = currentBasket[i].itemSize;
+        cell5.innerHTML = currentBasket[i].itemPrice;
+        
+    }
+}
