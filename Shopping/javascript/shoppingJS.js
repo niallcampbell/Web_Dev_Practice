@@ -279,3 +279,32 @@ function getItemSize()
 {
     return this.size;
 }
+
+
+function addItemToBasket()
+{
+    
+    if(sessionStorage.getItem("currentBasket") == null)
+    {
+        var basket = {};
+        sessionStorage.setItem("currentBasket", JSON.stringify(basket));
+        sessionStorage.setItem("numOfItemsInBasket", 0);
+    }
+    
+    var itemImageSrc = document.getElementById("itemImage").getAttribute("src");
+    var itemName = document.getElementById("itemName").innerHTML;
+    var itemPrice = document.getElementById("itemPrice").innerHTML;
+    var itemSize = document.getElementById("itemSize").value;
+    
+    var itemObj = { imageSrc: itemImageSrc, desc: itemName, price: itemPrice, itemSize: itemSize };
+    
+    var currentBasket = JSON.parse(sessionStorage.getItem("currentBasket"));
+    var itemNum = parseInt(sessionStorage.getItem("numOfItemsInBasket")) + 1;
+    var itemNumName = "item" + itemNum;
+    currentBasket[itemNumName] = itemObj;
+    
+    sessionStorage.setItem("currentBasket", JSON.stringify(currentBasket));
+    sessionStorage.setItem("numOfItemsInBasket", itemNum);
+    
+}
+

@@ -21,8 +21,7 @@
         
     </head>
     
-    <body onload="importNavBarIntoHTMLPage(); populateItemPage();">
-        
+    <body onload="importNavBarIntoHTMLPage()">
         
         <h2>The Shopping Website</h2>
         
@@ -30,19 +29,22 @@
         
         <br/>
         
-        <div>
-            <img id="itemImage">
-            <br/>
-            <h4 id="itemName">Name</h4>
-            <p id="itemPrice">€30</p>
-            <select name="itemSize" id="itemSize">
-                <option value="small">Small</option>
-                <option value="medium">Medium</option>
-                <option value="large">Large</option>
-            </select>
-            <br/>
-            <button class="addToBasketBtn" onclick="addItemToBasket()">Add to basket</button>
-        </div>
+        <h3>Shopping Basket</h3>
+        
+        <!-- Table -->
+        <table class="table table-borderless">
+            <thead>
+                <tr>
+                    <th scope="col">Item</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Qty</th>
+                    <th scope="col">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        
         
     </body>
     

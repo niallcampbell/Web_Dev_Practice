@@ -29,6 +29,10 @@ h2 {
     text-align: center;
 }
 
+h3 {
+    text-align: center;
+}
+
 h4 {
     text-align: center;
 }
@@ -38,6 +42,13 @@ p {
 }
 
 select {
+    font-family: 'Roboto Mono', monospace;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+}
+
+.addToBasketBtn {
     font-family: 'Roboto Mono', monospace;
     text-align: center;
     display: block;
