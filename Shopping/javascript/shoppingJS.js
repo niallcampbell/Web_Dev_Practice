@@ -151,6 +151,23 @@ function showUserNavDropdown()
     document.getElementById("userDropdownContentID").classList.toggle("show");
 }
 
+function showBasketNavDropdown()
+{
+    document.getElementById("basketContentID").classList.toggle("show");
+    printNumOfItemsInBasket();
+}
+
+function printNumOfItemsInBasket()
+{
+    var numItemsInBasket = sessionStorage.getItem("numOfItemsInBasket");
+    if(numItemsInBasket == null)
+    {
+        numItemsInBasket = 0;
+    }
+    var pElement = $("#numItemsInBasketNav");
+    pElement.html("Items in Basket: " + numItemsInBasket);
+}
+
 /* If the user clicks anywhere else on the window, then the dropdown menu from the user nav is hidden. */
 window.onclick = function(userAction)
 {
@@ -163,7 +180,6 @@ window.onclick = function(userAction)
         }
     }
 }
-
 
 function initialiseUserProfileHTMLPage()
 {
@@ -307,6 +323,8 @@ function addItemToBasket()
     sessionStorage.setItem("currentBasket", JSON.stringify(currentBasket));
     sessionStorage.setItem("numOfItemsInBasket", itemNum);
     
+    showBasketNavDropdown();
+    
 }
 
 function printShoppingBasket()
@@ -317,30 +335,128 @@ function printShoppingBasket()
     
     var tableBody = document.getElementById("basketTableBody");
     
-    console.log(currentBasket[0].imageSrc);
-    
     for(var i = 0; i < currentBasket.length; i++)
     {
         //add row to table
         var row = tableBody.insertRow();
+        row.setAttribute("class", "basketTableRow");
         //add cells with info
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
         var cell3 = row.insertCell(2);
         var cell4 = row.insertCell(3);
         var cell5 = row.insertCell(4);
+        var cell6 = row.insertCell(5);
         
-        var div = document.createElement('div');
+        var imgDiv = document.createElement('div');
         var img = document.createElement('img');
         img.setAttribute("src", currentBasket[i].imageSrc);
         img.setAttribute("class", "tableImage")
-        div.appendChild(img);
+        imgDiv.appendChild(img);
         
-        cell1.appendChild(div);
+        var qtyBtn = document.createElement('input');
+        qtyBtn.setAttribute("type", "number");
+        qtyBtn.setAttribute("name", "qty");
+        qtyBtn.setAttribute("class", "qtyOfItemBtn");
+        qtyBtn.setAttribute("min", "1");
+        qtyBtn.setAttribute("value", "1");
+        qtyBtn.addEventListener("input", updatePriceOfItemBasedOnQuantity);
+        
+        var removeItemBtn = document.createElement('button');
+        removeItemBtn.setAttribute("type", "button");
+        removeItemBtn.setAttribute("class", "removeItemBtn");
+        removeItemBtn.addEventListener("click", removeItemFromBasket);
+        removeItemBtn.innerHTML = "Remove";
+        
+        cell1.appendChild(imgDiv);
         cell1.setAttribute("class", "imageCell");
         cell2.innerHTML = currentBasket[i].itemName;
         cell3.innerHTML = currentBasket[i].itemSize;
+        cell4.appendChild(qtyBtn);
         cell5.innerHTML = currentBasket[i].itemPrice;
+        cell6.appendChild(removeItemBtn);
         
     }
+    
+    updateTotalPriceOfBasket();
+}
+
+
+function updatePriceOfItemBasedOnQuantity()
+{
+    var basketRows = document.getElementsByClassName("basketTableRow");
+    
+    for(var i = 0; i < basketRows.length; i++)
+    {
+        basketItem = basketRows[i];
+        
+        var itemDesc = basketRows[i].cells[1].innerHTML;
+        
+        for(var j = 0; j < storeItems.length; j++)
+        {
+            if(storeItems[j].getItemDescription() == itemDesc)
+            {
+                var price = storeItems[j].getItemPrice();
+            }
+        }
+        
+        var qtyInputElement = basketRows[i].getElementsByClassName("qtyOfItemBtn");
+        var qtyValue = parseInt(qtyInputElement[0].value);
+        
+        var newTotalPriceForItem = qtyValue * price;
+        console.log(newTotalPriceForItem);
+        
+        basketRows[i].cells[4].innerHTML = "€" + newTotalPriceForItem;
+    }
+    
+    updateTotalPriceOfBasket();
+}
+
+function updateTotalPriceOfBasket()
+{
+    var totalBasketPriceCell = document.getElementById("totalBasketPriceCell");
+    
+    var basketRows = document.getElementsByClassName("basketTableRow");
+    
+    var totalBasketPrice = 0;
+    
+    var itemPriceStr = "";
+    var itemPrice = 0;
+    
+    for(var i = 0; i < basketRows.length; i++)
+    {
+        itemPriceStr = basketRows[i].cells[4].innerHTML;
+        itemPriceStr = itemPriceStr.replace("€", "");
+        itemPrice = parseInt(itemPriceStr);
+        console.log(itemPrice);
+        totalBasketPrice += itemPrice;
+    }
+    
+    totalBasketPriceCell.innerHTML = "€" + totalBasketPrice;
+}
+
+function removeItemFromBasket(event)
+{
+    var buttonClicked = event.target;
+    
+    var itemDesc = buttonClicked.parentElement.parentElement.cells[1].innerHTML;
+    var itemSize = buttonClicked.parentElement.parentElement.cells[2].innerHTML;
+    
+    buttonClicked.parentElement.parentElement.remove();
+    updateTotalPriceOfBasket();
+    
+    var currentBasket = JSON.parse(sessionStorage.getItem("currentBasket"));
+    
+    for(var i = 0; i < currentBasket.length; i++)
+    {
+        if(currentBasket[i].itemName == itemDesc && currentBasket[i].itemSize == itemSize)
+        {
+            currentBasket.splice(i, 1); //at index i remove 1 item
+        }
+    }
+    
+    sessionStorage.setItem("currentBasket", JSON.stringify(currentBasket));
+    var numItemsInBasket = parseInt(sessionStorage.getItem("numOfItemsInBasket")) - 1;
+    sessionStorage.setItem("numOfItemsInBasket", numItemsInBasket);
+    
 }

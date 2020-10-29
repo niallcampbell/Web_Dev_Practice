@@ -4,7 +4,9 @@
             
     <div class="navTopRight">
                 
-        <a href="basket.html"><i class="fa fa-fw fa-shopping-basket"></i> Basket</a>
+        <!-- <a href="basket.html"><i class="fa fa-fw fa-shopping-basket"></i> Basket</a> -->
+        
+        
                 
         <div class="userDropdownDiv">
             <button class="userDropdownButton" id="userDropdownButtonID" onclick="showUserNavDropdown()" ></button>
@@ -16,5 +18,17 @@
                 
             </div>
         </div>
+        
+        <div class="userDropdownDiv">
+            <button class="userDropdownButton" id="basketButtonID" onclick="showBasketNavDropdown()" >Basket</button>
+                    
+            <div class="userDropdownContent" id="basketContentID">
+                
+                <p id="numItemsInBasketNav"></p>
+                <a href="basket.html">Go To Basket</a>
+                
+            </div>
+        </div>
+        
     </div>    
 </div>

@@ -165,3 +165,7 @@ button {
 input {
     font-family: 'Roboto Mono', monospace;
 }
+
+.qtyOfItemBtn {
+    width: 60px;
+}
