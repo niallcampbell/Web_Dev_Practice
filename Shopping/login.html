@@ -6,6 +6,16 @@
         <title>Login to shopping website</title>
         
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+        
+        <!-- Bootstrap libraries for Carousel (note you need to import jQuery as well before bootstrap js) -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+        
+        <!-- Load icon library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        <!-- Local css and JS-->
         <link rel=stylesheet href="css/shopping.css">
         <script type="text/javascript" src="javascript/shoppingJS.js"></script>
         
@@ -15,9 +25,10 @@
         
         <div id="loginBody" class="centerDivs">
             
-            <h2>Login to shopping website</h2>
+            <h2>Login</h2>
             
-            <p>Please enter your login details</p>
+            <br/>
+            <br/>
             
             <form>
                 
@@ -29,14 +40,15 @@
                 
                 <br/>
                 <br/>
+                <br/>
                 
-                    <input type="button" id="submitLoginDetails" class="buttons" value="Login" onclick="verifyUserLoginDetails()" />
+                    <input type="button" id="submitLoginDetails" class="buttons btn btn-outline-secondary btn-lg" value="Login" onclick="verifyUserLoginDetails()" />
                 
             </form>
             
             <br/>
             
-            <a href="index.html"><button type="button" id="returnToHomeFromLoginPage" class="buttons">Return to Home</button></a>
+            <a href="index.html"><button type="button" id="returnToHomeFromLoginPage" class="buttons btn btn-outline-secondary btn-lg">Return to Home</button></a>
             
         </div>
         
@@ -44,7 +56,7 @@
             
             <p>Login Details are inccorect</p>
             
-            <a href="login.html"><button type="button" id="logInButton" class="buttons">Log In Again</button></a>
+            <a href="login.html"><button type="button" id="logInButton" class="buttons btn btn-outline-secondary btn-lg">Log In Again</button></a>
             
         </div>
         

@@ -1,5 +1,6 @@
 body {
     font-family: 'Roboto Mono', monospace;
+    color: darkgray;
 }
 
 .centerDivs {
@@ -12,11 +13,34 @@ body {
     align-items: center;
     text-align: center;
     
-    border-radius: 5px;
-    background-color: #f2f2f2;
+    
+    background-color: none;
     padding: 20px;
     width: 50%;
+    border: none;
+}
+
+.shopItemsCarouselDiv {
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    text-align: center;
+    
+    border-radius: 5px;
     border: solid;
+    background-color: lightgray;
+    padding: 20px;
+    width: 50%;
+    
+}
+
+.buttons {
+    font-family: 'Roboto Mono', monospace;
+    margin-left: 10px;
 }
 
 header {
@@ -57,7 +81,7 @@ select {
 
 .navigationBar, .userDropdownButton {
     
-    background-color: antiquewhite;
+    background-color: lightgray;
     overflow: hidden;
 }
 
@@ -65,7 +89,7 @@ select {
 .navigationBar a {
     
     float: left;
-    color: brown;
+    color: whitesmoke;
     text-align: center;
     padding: 14px 16px; /* above+below and left+right */
     text-decoration: none; /* removes underline on links */
@@ -76,7 +100,7 @@ select {
 .navigationBar a:hover, .userDropdownDiv:hover .userDropdownButton, .userDropdownButton:focus {
     
     background-color: cornflowerblue;
-    color: aliceblue;    
+    color: whitesmoke;    
 }
 
 /* links that are to be the right of the screen */
@@ -96,7 +120,7 @@ select {
     font-size: 17px;
     border: none;
     outline: none;
-    color: brown;
+    color: whitesmoke;
     padding: 14px 16px;
     margin: 0;
 }
@@ -113,7 +137,7 @@ select {
 .userDropdownContent a {
     
     float: none;
-    color: brown;
+    color: lightgray;
     padding: 14px 16px;
     text-decoration: none;
     display: block;
@@ -121,7 +145,7 @@ select {
 }
 
 .userDropdownContent a:hover {
-    background-color: azure;
+    background-color: cornflowerblue;
 }
 
 .show {
@@ -158,14 +182,14 @@ tr {
     height: 25%;
 }
 
-button {
-    font-family: 'Roboto Mono', monospace;
-}
-
-input {
+input[type=text] {
     font-family: 'Roboto Mono', monospace;
 }
 
 .qtyOfItemBtn {
     width: 60px;
+}
+
+.carouselArrowColour {
+    color: gray;
 }

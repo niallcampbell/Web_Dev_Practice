@@ -365,6 +365,9 @@ function printShoppingBasket()
         var removeItemBtn = document.createElement('button');
         removeItemBtn.setAttribute("type", "button");
         removeItemBtn.setAttribute("class", "removeItemBtn");
+        removeItemBtn.setAttribute("class", "btn");
+        removeItemBtn.setAttribute("class", "btn-outline-secondary");
+        removeItemBtn.setAttribute("class", "btn-sm");
         removeItemBtn.addEventListener("click", removeItemFromBasket);
         removeItemBtn.innerHTML = "Remove";
         
